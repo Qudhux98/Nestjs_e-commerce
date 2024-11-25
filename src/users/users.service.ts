@@ -1,11 +1,10 @@
-import { Users } from "db/data_source"
-import {updateUserEntity } from "./dtos_ft_entity/update-user-dto"
+import { user} from "../../db/data_source"
 import { Injectable } from "@nestjs/common"
-import {createUserEntity} from "./dtos_ft_entity/create-user-dto"
+import User from "entities/user.entity"
 
 @Injectable()
 export class UsersService{
-    users = Users
+    users = user
 
     getAllUsers(){
         return this.users
@@ -13,10 +12,10 @@ export class UsersService{
 getUserById(id:number ){
     return this.users.find(e=>e.id === id)
 }
-createUser(user: createUserEntity){
+createUser(user: User){
     return this.users.push(user)
 }
-updateUser(id: number, user:updateUserEntity) {
+updateUser(id: number, user) {
     const userForUpdate = this.users.find(e=>e.id === id) 
     
     const updatedUser = {...userForUpdate, ...user}
