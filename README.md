@@ -6,3 +6,13 @@
 5. In this module, we will building e-commerce app using Nestjs, TypeORM and Postgre
 6. So, this is just the beginning. Watch out.
 
+
+
+
+# Migrations
+
+# Compiling to Javascript 
+typeorm": "npm run build && npx typeorm -d dist/db/data-source.js
+
+# Without compiling to Javascript
+typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -d src/config/config.ts

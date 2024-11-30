@@ -25,7 +25,7 @@ import Cart from "./cart.entity";
 
 // ONE-ONE RELATIONSHIP TO CART
 export default class Order {
-    cartId: number;
+    cartId?: number;
 
     isPaid: boolean;
 

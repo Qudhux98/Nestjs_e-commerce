@@ -1,5 +1,6 @@
 import { PartialType } from "@nestjs/mapped-types";
-import { IsNotEmpty, IsNumber, IsString, IsOptional} from "class-validator";
+import { Transform } from "class-transformer";
+import { IsNotEmpty, IsNumber,IsOptional} from "class-validator";
 
 
 export class createCartDto{
@@ -22,8 +23,6 @@ export class updateCartDto extends PartialType(createCartDto){
   
 }
 
-
-
 export class AddToCartDto {
   @IsNotEmpty()
   @IsNumber()
@@ -42,3 +41,16 @@ export class AddToCartDto {
   userId: number;
 }
 
+
+
+export class GetOrderDto {
+  @Transform (({value})=> value? parseInt(value, 10): undefined)
+  @IsOptional()
+  @IsNumber()
+  cartId?: number;
+
+  @Transform (({value})=> parseInt(value, 10))
+  @IsNotEmpty()
+  @IsNumber()
+  userId: number;
+}

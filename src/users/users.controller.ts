@@ -12,7 +12,7 @@ export class UsersController{
       // this.usersService = new UsersService();
    }
 
-   @ Get()
+   @ Get('users')
    getUsers(){
    
     return this.usersService.getAllUsers()
@@ -24,10 +24,10 @@ export class UsersController{
    
    }
 
-   @Post()
-   createUser(@Body() user: createUserDto){
-      this.usersService.createUser(user)
-    return "user created successfully";
+   @Post('user')
+   async createUser(@Body() user: createUserDto){
+      return await this.usersService.createUser(user)
+    
    }
    @Patch(':id')
 updateUser(@Param('id', ParseIntPipe) id: number, @Body() user: updateUserDto){

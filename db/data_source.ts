@@ -4,41 +4,7 @@ import Product from 'entities/product.entity';
 import User from 'entities/user.entity';
 
 export const user: User[] = [
-  {
-    id: 1,
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '0908768765',
-    passwordHash: 'password123',
-  },
-  {
-    id: 2,
-    name: 'Jane Smith',
-    email: 'janesmith@example.com',
-    phone: '0908768765',
-    passwordHash: 'securePass!456',
-  },
-  {
-    id: 3,
-    name: 'Alice Johnson',
-    email: 'alicejohnson@example.com',
-    phone: '09075803023',
-    passwordHash: 'Alice@789',
-  },
-  {
-    id: 4,
-    name: 'Bob Williams',
-    email: 'bobwilliams@example.com',
-    phone: '0908768765',
-    passwordHash: 'BobSecure#321',
-  },
-  {
-    id: 5,
-    name: 'Emily Davis',
-    email: 'emilydavis@example.com',
-    phone: '0908768765',
-    passwordHash: 'EmilySafe987',
-  },
+  
 ];
 
 export const products: Product[]=[

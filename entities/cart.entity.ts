@@ -1,11 +1,9 @@
-import CartDetail from "./cartDetail.entity";
+import CartDetail from "./user";
 
 export default class Cart {
     id: number;
 
     userId: number;
-
-    productId: number;
 
     totalAmount: number;
 

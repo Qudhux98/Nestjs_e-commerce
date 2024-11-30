@@ -1,22 +1,16 @@
 import { PartialType } from "@nestjs/mapped-types";
-import { IsEmail, IsOptional, IsNotEmpty,IsNumber, IsString,MinLength} from "class-validator";
-
-export class createUserEntity {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-}
+import { IsEmail, IsOptional, IsNotEmpty,IsNumber, IsString,MinLength, IsDate} from "class-validator";
+// import { Roles } from "utility/common/user.roles.enum";
 
 export class createUserDto{
-  @IsNumber()
-  id: number;
-
+  
   @IsString()
   @IsNotEmpty()
   @MinLength(3)
   name: string;
 
+  @IsString()
+  @IsNotEmpty()
   phone: string;
 
   @IsEmail()
@@ -25,6 +19,10 @@ export class createUserDto{
 
   @IsString()
   passwordHash?: string;
+
+
+  // @IsString()
+  //   roles: Roles[]
    
 }
 
