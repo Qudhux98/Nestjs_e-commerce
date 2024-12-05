@@ -1,13 +1,28 @@
-import CartDetail from "./user";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import CartDetail from "./cart_detail.entity";
+import User from "./user.entity";
 
+
+@Entity('carts')
 export default class Cart {
+    @PrimaryGeneratedColumn()
     id: number;
 
+    @Column()
     userId: number;
 
+    @Column()
     totalAmount: number;
 
-    cartDetails: CartDetail[];
+    // relations
+  @ManyToOne(() => User, (user) => user.cart)
+  @JoinColumn({ name: 'userId' })
+  user: User;
+
+  @OneToMany(() => CartDetail, (cartProduct) => cartProduct.cart)
+  cartProducts: CartDetail[];
+
+  // items: any;
 }
 
 

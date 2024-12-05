@@ -1,4 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import Product from "./product.entity";
+import Cart from "./cart.entity";
 // import { Roles } from "utility/common/user.roles.enum";
 
 @Entity('users')
@@ -18,6 +20,12 @@ export default class User {
 
     @CreateDateColumn()
     createdAt: Date
+
+  //relation
+
+
+  @OneToMany(() => Cart, (cart) => cart.user)
+  cart: Cart;
 
     // @Column({type: 'timestamp', default: ()=>'CURRENT_TIMESTAMP'})
 

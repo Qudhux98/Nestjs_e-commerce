@@ -8,6 +8,7 @@ import Cart from 'entities/cart.entity';
 import Order from 'entities/order.entity';
 import Product from 'entities/product.entity';
 import User from 'entities/user.entity';
+import CartDetail from 'entities/cart_detail.entity';
 
 config()
 export const dataSourceOptions: DataSourceOptions = {
@@ -15,7 +16,7 @@ export const dataSourceOptions: DataSourceOptions = {
   host: process.env.DB_HOST,
   username:process.env.DB_USERNAME, 
   password: process.env.DB_PASSWORD,
-  entities: [User],
+  entities: [User, Cart, CartDetail, Product],
   migrations:[],
   // migrations:[__dirname + '/../migrations/*.{ts, js}'],
   database: process.env.DB_DATABASE,

@@ -1,11 +1,24 @@
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import CartDetail from './cart_detail.entity';
+
+@Entity('products')
 export default class Product {
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    name: string;
+  @Column()
+  name: string;
 
-    quantity: number;
+  @Column()
+  quantity: number;
 
-    description: string;
+  @Column()
+  description: string;
 
-    price: number;
+  @Column()
+  price: number;
+
+  //relation
+  // @OneToMany(() => CartDetail, (cartProduct) => cartProduct.products)
+  // cartProducts: CartDetail[];
 }
