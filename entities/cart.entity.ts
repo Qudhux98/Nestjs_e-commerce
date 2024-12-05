@@ -14,6 +14,9 @@ export default class Cart {
     @Column()
     totalAmount: number;
 
+    @Column({type: 'varchar', default: ''})
+    otherName: string;
+
     // relations
   @ManyToOne(() => User, (user) => user.cart)
   @JoinColumn({ name: 'userId' })

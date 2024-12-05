@@ -9,6 +9,8 @@ import Order from 'entities/order.entity';
 import Product from 'entities/product.entity';
 import User from 'entities/user.entity';
 import CartDetail from 'entities/cart_detail.entity';
+import { cwd } from 'process';
+import path from 'path';
 
 config()
 export const dataSourceOptions: DataSourceOptions = {
@@ -17,15 +19,15 @@ export const dataSourceOptions: DataSourceOptions = {
   username:process.env.DB_USERNAME, 
   password: process.env.DB_PASSWORD,
   entities: [User, Cart, CartDetail, Product],
-  migrations:[],
-  // migrations:[__dirname + '/../migrations/*.{ts, js}'],
+  migrations:['./src/migrations/**.{ts, js}'],
   database: process.env.DB_DATABASE,
   port: Number(process.env.DB_PORT),
-  synchronize: true,
+  synchronize: false,
   logging: true,
 };
 
 const dataSource = new DataSource(dataSourceOptions);
+export const dirname = __dirname;
 
 export default dataSource;
 

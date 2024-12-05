@@ -86,14 +86,20 @@ export class CartsService {
       referencedProduct.quantity -= cartDto.quantity;
 
       cart.totalAmount += cartDetail.amount;
+      // await this.dbManager.save(cartDetail)
+      let newCartDetails = this.dbManager.create(CartDetail, cartDetail);
+      this.dbManager.transaction(async (transactionManager) => {
+       newCartDetails = await transactionManager.save(newCartDetails);
+       await transactionManager.save(cart);
+     });
 
-      cartDetails.push(cartDetail);
+      // cartDetails.push(cartDetail);
     }
 
     // push cart to store if it is a new cart;
     if (!cartDto.cartId) {
       let newCart = this.dbManager.create(Cart, cart);
-      await this.dbManager.transaction(async (transactionManager) => {
+       this.dbManager.transaction(async (transactionManager) => {
         newCart = await transactionManager.save(newCart);
 
         cartDetails = cartDetails.map((cartDetail) => {
